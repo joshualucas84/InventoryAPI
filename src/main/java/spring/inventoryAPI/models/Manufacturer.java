@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "manufacturer")
 public class Manufacturer {
     @Id
-   // @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long manufacturer_id;
     private String name;
     @Column(name="date_created")
@@ -26,8 +26,7 @@ public class Manufacturer {
 
     public Manufacturer(){};
 
-    public Manufacturer(Long manufacturer_id,String name){
-        this.manufacturer_id = manufacturer_id;
+    public Manufacturer(String name){
         this.name = name;
         this.dateCreated= new Date();
     }

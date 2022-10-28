@@ -5,7 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -18,25 +20,24 @@ import java.util.List;
 @Table(name = "warehouse")
 public class Warehouse {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long warehouse_id;
     private String name;
     private String address;
 
-    @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "parts_id")
-    private List<Parts> parts;
-
+    @OneToMany
+    @JoinColumn(name = "warehouse_parts_id")
+    private Set<WarehouseParts> warehouseParts = new HashSet<>();
     @Column(name="date_created")
     @CreationTimestamp
     private Date dateCreated;
     public Warehouse(){};
 
-    public Warehouse(Long warehouse_id ,String  name, String address){
-        this.warehouse_id = warehouse_id;
+    public Warehouse(String  name, String address){
+
         this.name = name;
         this.address = address;
+
         this.dateCreated = new Date();
     }
 
@@ -56,12 +57,23 @@ public class Warehouse {
     }
 
 
-    public List<Parts> getParts() {
-        return parts;
+    public Set<WarehouseParts> getWareHouseParts() {
+        return this.warehouseParts;
     }
 
-    public void setParts(List<Parts> parts) {
-        this.parts = parts;
+    public void addWarehousePart(WarehouseParts warehouseParts) {
+        if(warehouseParts !=null){
+            // warehouseParts.setWarehouse(this);
+            this.warehouseParts.add(warehouseParts);
+        }
+    }
+
+    public void setWareHouseParts(Set<WarehouseParts> WarehouseParts) {
+        for (WarehouseParts warehouseParts: WarehouseParts
+        ) {
+            this.addWarehousePart(warehouseParts);
+
+        }
     }
 
     public Long getWarehouse_id() {

@@ -15,6 +15,7 @@ import java.util.Date;
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customer_id;
     private String name;
     private String address;
@@ -25,8 +26,7 @@ public class Customer {
     @CreationTimestamp
     private Date dateCreated;
     public Customer(){};
-    public Customer(Long customer_id,String name, String address, String phone, String email){
-        this.customer_id=customer_id;
+    public Customer(String name, String address, String phone, String email){
         this.name =name;
         this.address = address;
         this.phone = phone;

@@ -15,6 +15,7 @@ import java.util.Date;
 @Table(name = "store")
 public class Store {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long store_id;
     private String name;
     private String address;
@@ -23,8 +24,8 @@ public class Store {
     private Date dateCreated;
     public Store(){};
 
-    public Store( Long store_id,String name, String address){
-       this.store_id=store_id;
+    public Store( String name, String address){
+
         this.name =name;
         this.address= address;
         this.dateCreated = new Date();

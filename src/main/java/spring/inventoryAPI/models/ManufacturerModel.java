@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "manufacturer_model")
 public class ManufacturerModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long manufacturer_model_id;
     @OneToOne
     @JoinColumn(name = "manufacturer_id")
@@ -27,8 +28,7 @@ public class ManufacturerModel {
     @CreationTimestamp
     private Date dateCreated;
     public ManufacturerModel(){};
-    public ManufacturerModel(Long manufacturer_model_id,Manufacturer manufacturer, String name){
-        this.manufacturer_model_id = manufacturer_model_id;
+    public ManufacturerModel(Manufacturer manufacturer, String name){
         this.manufacturer = manufacturer;
         this.name = name;
         this.dateCreated= new Date();

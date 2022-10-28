@@ -2,6 +2,7 @@ package spring.inventoryAPI.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,16 +20,14 @@ import java.util.List;
 public class Parts {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long parts_id;
     private String name;
 
     @Column(name="date_created")
     @CreationTimestamp
     private Date dateCreated;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "warehouse_id", nullable = false)
-    private Warehouse warehouse;
+
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -41,17 +40,15 @@ public class Parts {
     private boolean isAvailable;
 
     public Parts(){};
-    public Parts(  Long parts_id,
-                   String name,
+    public Parts(  String name,
                   Manufacturer manufacturer,
                   ManufacturerModel manufacturerModel,
-                  Warehouse warehouse,
                   boolean available){
+
         this.parts_id = parts_id;
         this.name =name;
         this.manufacturer = manufacturer;
         this.manufacturerModel = manufacturerModel;
-        this.warehouse = warehouse;
         this.isAvailable = available;
         this.dateCreated = new Date();
     }
@@ -74,13 +71,6 @@ public class Parts {
         isAvailable = available;
     }
 
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
 
     public Manufacturer getManufacturer() {
         return manufacturer;
