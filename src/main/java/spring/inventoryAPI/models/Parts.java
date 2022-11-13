@@ -45,7 +45,6 @@ public class Parts {
                   ManufacturerModel manufacturerModel,
                   boolean available){
 
-        this.parts_id = parts_id;
         this.name =name;
         this.manufacturer = manufacturer;
         this.manufacturerModel = manufacturerModel;
