@@ -45,7 +45,7 @@ public class Parts {
                   ManufacturerModel manufacturerModel,
                   boolean available){
 
-        this.name =name;
+        this.name = name;
         this.manufacturer = manufacturer;
         this.manufacturerModel = manufacturerModel;
         this.isAvailable = available;

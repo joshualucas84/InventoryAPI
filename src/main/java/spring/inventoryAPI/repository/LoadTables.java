@@ -73,16 +73,10 @@ public class LoadTables implements ApplicationRunner {
         Parts part4 =new Parts("Battery", ford,fordBattery, true);
         partsRepository.save( part1);
         partsRepository.save( part2);
-         partsRepository.save(part3);
+        partsRepository.save(part3);
         partsRepository.save(part4);
 
-
-        //partsList1.add(part1);
-        //partsList1.add(part2);
-        //partsList1.add(part3);
-        //partsList1.add(part4);
-
-         WarehouseParts warehouseParts = new WarehouseParts(warehouse1, part1);
+        WarehouseParts warehouseParts = new WarehouseParts(warehouse1, part1);
         WarehouseParts warehouseParts1 = new WarehouseParts(warehouse1, part2);
         WarehouseParts warehouseParts2 = new WarehouseParts(warehouse1, part3);
         WarehouseParts warehouseParts3 = new WarehouseParts(warehouse1, part4);
@@ -91,36 +85,14 @@ public class LoadTables implements ApplicationRunner {
         WarehouseParts warehouseParts6 = new WarehouseParts(warehouse2, part3);
         WarehouseParts warehouseParts7 = new WarehouseParts(warehouse2, part4);
 
-        Set<WarehouseParts> warehousePartsList = new HashSet<>();
-
-        warehousePartsList.add(warehouseParts);
-        warehousePartsList.add(warehouseParts1);
-        warehousePartsList.add(warehouseParts2);
-        warehousePartsList.add(warehouseParts3);
-        warehousePartsList.add(warehouseParts4);
-        warehousePartsList.add(warehouseParts5);
-        warehousePartsList.add(warehouseParts6);
-        warehousePartsList.add(warehouseParts7);
-
-        warehouse1.setWareHouseParts(warehousePartsList);
-
-        warehousePartsRepository.save(warehouseParts);
-        warehousePartsRepository.save(warehouseParts1);
-        warehousePartsRepository.save(warehouseParts2);
-        warehousePartsRepository.save(warehouseParts3);
-        warehousePartsRepository.save(warehouseParts4);
-        warehousePartsRepository.save(warehouseParts5);
-        warehousePartsRepository.save(warehouseParts6);
-        warehousePartsRepository.save(warehouseParts7);
-
-
-
-
-        // Set<Parts> partsList2 = new HashSet<>();
-      //   warehouse1.setParts(partsList1);
-      //  warehouse2.setParts(partsList2);
-
-        //partsRepository.save( part3 );
+         warehousePartsRepository.save(warehouseParts);
+         warehousePartsRepository.save(warehouseParts1);
+         warehousePartsRepository.save(warehouseParts2);
+         warehousePartsRepository.save(warehouseParts3);
+         warehousePartsRepository.save(warehouseParts4);
+         warehousePartsRepository.save(warehouseParts5);
+         warehousePartsRepository.save(warehouseParts6);
+         warehousePartsRepository.save(warehouseParts7);
 
         // load WStore
         storeRepository.save( new Store("Store1", "Alabama"));
